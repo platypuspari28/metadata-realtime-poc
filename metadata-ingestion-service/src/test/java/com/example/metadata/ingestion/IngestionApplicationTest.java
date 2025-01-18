@@ -11,6 +11,6 @@ public class IngestionApplicationTest {
 
   @Test
   public void contextLoads() {
-    // If the application context loads without issues, this test passes.
+    // If the application context loads without issues, this test passes successfully.
   }
 }

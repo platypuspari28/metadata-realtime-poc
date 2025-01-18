@@ -14,6 +14,6 @@ public class ProcessingApplicationTest {
 
   @Test
   public void contextLoads() {
-    // If the application context loads without any issues, this test passes.
+    // If the application context loads without any issues, this test passes successfully.
   }
 }

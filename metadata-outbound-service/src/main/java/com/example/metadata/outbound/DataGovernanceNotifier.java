@@ -18,10 +18,10 @@ public class DataGovernanceNotifier {
     MetadataEvent event = record.value();
     System.out.println("Outbound notifier received: " + event);
 
-    // Check classification from the event payload
+    // Checking classification from the event payload
     String classification = (String) event.getPayload().get("classification");
     if ("PII".equalsIgnoreCase(classification)) {
-      // Perform external API call or any custom logic to enforce data governance
+      // Performing external API call or any custom logic to enforce data governance downstream
       enforceDataGovernance(event);
     }
   }
@@ -32,6 +32,5 @@ public class DataGovernanceNotifier {
    */
   private void enforceDataGovernance(MetadataEvent event) {
     System.out.println("Enforcing governance for PII on asset: " + event.getAssetId());
-    // e.g., restTemplate.postForObject("http://external-system/api/enforce", event, Void.class);
   }
 }

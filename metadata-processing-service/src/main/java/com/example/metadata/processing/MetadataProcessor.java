@@ -17,7 +17,7 @@ public class MetadataProcessor {
     MetadataEvent event = record.value();
     System.out.println("Processing inbound event: " + event);
 
-    // Example transformation: add a processing timestamp & default classification
+    // Sample transformation: add a processing timestamp & default classification
     event.getPayload().put("processedTimestamp", System.currentTimeMillis());
     event.getPayload().put("atlanClassified", "UNCLASSIFIED");
 

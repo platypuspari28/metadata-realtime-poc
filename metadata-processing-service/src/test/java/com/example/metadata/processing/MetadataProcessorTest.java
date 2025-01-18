@@ -16,22 +16,22 @@ public class MetadataProcessorTest {
 
   @Test
   public void testProcessEvent() {
-    // Create a sample payload map for the event
+    // Creating a sample payload map for the event
     Map<String, Object> payload = new HashMap<>();
     payload.put("initialKey", "initialValue");
 
-    // Build a MetadataEvent object and set its fields.
+    // Building a MetadataEvent object and set its fields.
     MetadataEvent event = new MetadataEvent();
     event.setEventId("testEventId");
     event.setSourceSystem("TestSource");
     event.setAssetId("table123");
     event.setPayload(payload);
 
-    // Create a ConsumerRecord containing the MetadataEvent.
+    // Creating a ConsumerRecord containing the MetadataEvent.
     ConsumerRecord<String, MetadataEvent> record =
         new ConsumerRecord<>("metadata.inbound", 0, 0L, "dummyKey", event);
 
-    // Create an instance of MetadataProcessor (without Spring context)
+    // Creating an instance of MetadataProcessor (without Spring context)
     MetadataProcessor processor = new MetadataProcessor();
     processor.processEvent(record);
 

@@ -27,7 +27,7 @@ public class MonteCarloIngestorTest {
   @Autowired
   private MockMvc mockMvc;
 
-  // Create a mock for the KafkaTemplate
+  // Creating a mock for the KafkaTemplate
   @MockBean
   private KafkaTemplate<String, MetadataEvent> kafkaTemplate;
 
@@ -41,18 +41,18 @@ public class MonteCarloIngestorTest {
         .content(requestBody))
         .andExpect(status().isOk());
 
-    // Capture the MetadataEvent object passed to KafkaTemplate.send(...)
+    // Capturing the MetadataEvent object passed to KafkaTemplate.send(...) method
     ArgumentCaptor<MetadataEvent> captor = ArgumentCaptor.forClass(MetadataEvent.class);
     verify(kafkaTemplate, times(1)).send(any(String.class), captor.capture());
 
     MetadataEvent sentEvent = captor.getValue();
 
-    // Verify that the event has been constructed properly.
+    // Verifying that the event has been constructed properly.
     assertNotNull("Event ID should not be null", sentEvent.getEventId());
     assertEquals("Source system is incorrect", "MonteCarlo", sentEvent.getSourceSystem());
     assertEquals("Asset ID is incorrect", "table_123", sentEvent.getAssetId());
 
-    // Verify the payload
+    // Verifying the payload
     Map<String, Object> payload = sentEvent.getPayload();
     assertNotNull("Payload should not be null", payload);
     assertEquals("Issue type in payload is incorrect", "data_freshness", payload.get("issueType"));

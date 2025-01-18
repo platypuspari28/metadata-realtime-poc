@@ -26,14 +26,14 @@ public class MonteCarloIngestor {
    */
   @PostMapping("/event")
   public String receiveEvent(@RequestBody Map<String, Object> payload) {
-    // Create a new MetadataEvent
+    // Creating a new MetadataEvent
     MetadataEvent event = new MetadataEvent();
     event.setEventId(UUID.randomUUID().toString());
     event.setSourceSystem("MonteCarlo");
     event.setAssetId(payload.getOrDefault("tableId", "unknown").toString());
     event.setPayload(payload);
 
-    // Publish the event to the inbound Kafka topic
+    // Publishing the event to the inbound Kafka topic
     kafkaTemplate.send(INBOUND_TOPIC, event);
 
     return "Received event with ID: " + event.getEventId();
