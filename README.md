@@ -210,7 +210,7 @@ metadata-realtime-poc/
 
 ## Unit Tests
 
-All modules include JUnit tests. You can run: _**mvn test**_ from the root or within each module to verify functionality.
+All modules include JUnit tests. You can run: ```mvn test``` from the root or within each module to verify functionality.
 
 ## License
 
