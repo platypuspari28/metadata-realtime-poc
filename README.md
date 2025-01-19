@@ -163,7 +163,7 @@ metadata-realtime-poc/
 
 ## Testing Inbound and Outbound Scenarios
 
-  ### Inbound Scenario
+  ### - _Inbound Scenario_
   
   You can simulate an inbound metadata event by sending a POST request to the ingestion service.
 
@@ -182,11 +182,11 @@ metadata-realtime-poc/
   - Ingestion Service logs the receipt of the event and publishes a MetadataEvent to the Kafka topic metadata.inbound.
   - Processing Service (listening to metadata.inbound) picks up the event, transforms the payload (adding, for example, a processedTimestamp and an "lilyClassified": "UNCLASSIFIED" field), and (if configured) writes to the metadata store or publishes an outbound event.
   
-  ### Outbound Scenario
+  ### - _Outbound Scenario_
   
   Simulate a metadata update that triggers data governance enforcement. For example, if an event is classified as "PII", the outbound service should process it.
   
-  **Option A: Manually Push an Event via Kafka CLI**
+  **_Option A: Manually Push an Event via Kafka CLI_**
   
   Use the Kafka console producer:
   ```
@@ -203,7 +203,7 @@ metadata-realtime-poc/
   - Outbound Service (listening on metadata.outbound) picks up the event.
   - It detects that the payload’s classification is "PII" and calls its governance enforcement mechanism (which, for demo purposes, logs the action).
   
-  **Option B: Programmatically Produce the Event** 
+  **_Option B: Programmatically Produce the Event_** 
   
   If the processing service is set up to produce outbound events under certain conditions, simply triggering that path (for example, via an inbound test that results in a classification change to "PII") will cause the outbound service to receive and process the event.
 
